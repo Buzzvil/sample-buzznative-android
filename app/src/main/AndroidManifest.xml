@@ -17,10 +17,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".NativeAdActivity" />
+
         <!-- Baidu integration -->
         <meta-data
             android:name="app_license"
-            android:value="YOUR_META_DATA_KEY" />
+            android:value="YOUR_APP_KEY" />
 
     </application>
 

@@ -7,8 +7,6 @@ repositories {
     maven {
         url "https://dl.bintray.com/buzzvil/maven/"
         credentials {
-//            username = "jimshin"
-//            password = "59e354c68f6ac44f1c7a61e38fd968e4b0a400a1"
             username = "techjin2"
             password = "9ad955e2c774aa51a2272a39042901a8265dd7c7"
         }
@@ -21,7 +19,7 @@ repositories {
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.slidejoy"
+        applicationId "sample.buzznative.buzzvil.com.buzznativesample"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
