@@ -1,0 +1,61 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    COMPILE_SDK_VERSION = 26
+    BUILD_TOOLS_VERSION = '26.0.2'
+    MIN_SDK_VERSION = 16
+    TARGET_SDK_VERSION = 23
+    MINIFY_ENABLED = true
+
+    PLAY_SERVICES_VERSION = '11.8.0'
+    ANDROID_SUPPORT_VERSION = '25.3.1'
+    ANDROID_ANNOTATIONS_VERSION = '4.4.0'
+    LOMBOK_VERSION = '1.16.0'
+    FACEBOOK_SDK_VERSION = '4.9.0'
+
+    /***************** Begin: for buzz-android-sdks ************************/
+    bintrayRepo = 'maven'            // master:'maven', develop:'alpha-maven'
+    publishedGroupId = 'com.buzzvil'
+    bintrayUserOrg = 'buzzvil'
+
+    siteUrl = 'https://buzzvil.com'
+    gitUrl = 'https://github.com/buzzvil/'
+
+    libraryVersion = '2.0.2'                // increase first and run 'docs/build-sdk.sh '
+    referencedLibraryVersion = '1.10.6'      // after then, referencedLibraryVersion have to be same with increased libraryVersion
+    // finally, run `./gradlew buzzad-sdk:bintrayUpload` to deploy sdk
+    developerId = 'urunimi'
+    developerName = 'Ben Pyungwoo Yoo'
+    developerEmail = 'ben.yoo@buzzvil.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+    /***************** End: for buzz-android-sdks ************************/
+}
