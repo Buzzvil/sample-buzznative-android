@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Press loadAd button"/>
+        android:text="Press loadAd button" />
 
     <com.buzzvil.buzzad.nativead.NativeAdView
         android:id="@+id/nativeAdView"
@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="#aaaaaa"
-        android:visibility="gone"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
