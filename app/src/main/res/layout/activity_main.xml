@@ -8,21 +8,12 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnFeedStyle"
+        android:id="@+id/btnFullscreenStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="15dp"
         android:onClick="onClickButton"
-        android:text="Feed style native ad" />
-
-    <Button
-        android:id="@+id/btnBannerStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="15dp"
-        android:onClick="onClickButton"
-        android:text="Banner style native ad" />
+        android:text="Fullscreen style native ad" />
 
 </LinearLayout>

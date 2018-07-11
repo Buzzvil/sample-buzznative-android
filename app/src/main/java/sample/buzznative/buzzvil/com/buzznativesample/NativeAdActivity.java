@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.buzzvil.buzzad.AdType;
 import com.buzzvil.buzzad.BuzzAdError;
 import com.buzzvil.buzzad.nativead.Ad;
 import com.buzzvil.buzzad.nativead.AdListener;
@@ -19,12 +20,6 @@ public class NativeAdActivity extends Activity {
     public static final String PLACEMENT_ID = "YOUR_APP_KEY";
     public static final String TAG = "NativeAdActivity";
 
-    public enum AdStyle {
-        FEED, BANNER
-    }
-
-    private AdStyle adStyle = null;
-
     private NativeAdView nativeAdView;
     private Button btnLoadAd;
     private TextView tvAdResponse;
@@ -33,24 +28,15 @@ public class NativeAdActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        adStyle = (AdStyle) getIntent().getSerializableExtra("AdStyle");
-
-        setContentView(adStyle);
+        setContentView();
 
         bindViews();
 
         setClickListener();
     }
 
-    void setContentView(AdStyle adStyle) {
-        switch (adStyle) {
-            case FEED:
-                setContentView(R.layout.activity_feed_style_native_ad);
-                break;
-            case BANNER:
-                setContentView(R.layout.activity_banner_style_native_ad);
-                break;
-        }
+    void setContentView() {
+        setContentView(R.layout.activity_fullscreen_style_native_ad);
     }
 
     void bindViews() {
@@ -66,6 +52,7 @@ public class NativeAdActivity extends Activity {
     void requestAd() {
         NativeAd nativeAd = new NativeAd(this, PLACEMENT_ID);
         nativeAd.setAdListener(nativeAdListener);
+        nativeAd.enableAdType(AdType.FULLSCREEN);
         nativeAd.loadAd();
 
         tvAdResponse.setText("Loading");
@@ -73,20 +60,8 @@ public class NativeAdActivity extends Activity {
 
     void setNativeAdView(Ad ad) {
         nativeAdView.setVisibility(View.VISIBLE);
-        nativeAdView.setTitleView(nativeAdView.findViewById(R.id.tvTitle));
-        nativeAdView.setDescriptionView(nativeAdView.findViewById(R.id.tvDescription));
         nativeAdView.setImageView(nativeAdView.findViewById(R.id.ivCoverImage));
-        nativeAdView.setIconView(nativeAdView.findViewById(R.id.ivIcon));
-        nativeAdView.setCallToActionView(nativeAdView.findViewById(R.id.btnCTA));
-        nativeAdView.setSponsoredView(nativeAdView.findViewById(R.id.tvSponsored));
         nativeAdView.setAd(ad);
-
-        if (TextUtils.isEmpty(ad.getCallToAction()) == false) {
-            ((Button) nativeAdView.findViewById(R.id.btnCTA)).setText(ad.getCallToAction());
-            nativeAdView.findViewById(R.id.btnCTA).setVisibility(View.VISIBLE);
-        } else {
-            nativeAdView.findViewById(R.id.btnCTA).setVisibility(View.GONE);
-        }
     }
 
     View.OnClickListener btnClickListener = new View.OnClickListener() {
@@ -110,8 +85,13 @@ public class NativeAdActivity extends Activity {
 
         @Override
         public void onAdLoaded(Ad ad) {
-            Log.e(TAG, "AdListener : onAdLoaded - " + (ad != null ? "Success" : "Fail"));
-            tvAdResponse.setText("onAdLoaded - " + (ad != null ? "Success" : "Fail"));
+            String message = "onAdLoaded - " + (ad != null ? "Success" : "Fail");
+            if (ad != null) {
+                // AdType.NATIVE or AdType.FULLSCREEN
+                message += " " + ad.getAdType();
+            }
+            Log.e(TAG, "AdListener : " + message);
+            tvAdResponse.setText(message);
 
             if (ad == null) {
                 nativeAdView.setVisibility(View.GONE);

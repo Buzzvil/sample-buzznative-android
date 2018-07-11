@@ -13,18 +13,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickButton(View view) {
-        NativeAdActivity.AdStyle adStyle = null;
-        switch (view.getId()) {
-            case R.id.btnFeedStyle:
-                adStyle = NativeAdActivity.AdStyle.FEED;
-                break;
-            case R.id.btnBannerStyle:
-                adStyle = NativeAdActivity.AdStyle.BANNER;
-                break;
-        }
-        if (adStyle != null) {
-            startActivity(new Intent(MainActivity.this, NativeAdActivity.class)
-                    .putExtra("AdStyle", adStyle));
-        }
+        startActivity(new Intent(MainActivity.this, NativeAdActivity.class));
     }
 }
