@@ -18,6 +18,7 @@
         </activity>
 
         <activity android:name=".NativeAdActivity" />
+        <activity android:name=".NativeAdRecyclerViewActivity" />
 
         <!-- Baidu integration -->
         <meta-data

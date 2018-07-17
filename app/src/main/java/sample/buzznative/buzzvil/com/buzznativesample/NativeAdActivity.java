@@ -16,7 +16,6 @@ import com.buzzvil.buzzad.nativead.NativeAd;
 import com.buzzvil.buzzad.nativead.NativeAdView;
 
 public class NativeAdActivity extends Activity {
-    public static final String PLACEMENT_ID = "YOUR_APP_KEY";
     public static final String TAG = "NativeAdActivity";
 
     public enum AdStyle {
@@ -64,7 +63,7 @@ public class NativeAdActivity extends Activity {
     }
 
     void requestAd() {
-        NativeAd nativeAd = new NativeAd(this, PLACEMENT_ID);
+        NativeAd nativeAd = new NativeAd(this, BuildConfig.PLACEMENT_ID);
         nativeAd.setAdListener(nativeAdListener);
         nativeAd.loadAd();
 

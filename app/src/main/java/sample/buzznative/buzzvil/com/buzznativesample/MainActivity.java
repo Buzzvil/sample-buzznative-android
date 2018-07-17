@@ -27,4 +27,8 @@ public class MainActivity extends AppCompatActivity {
                     .putExtra("AdStyle", adStyle));
         }
     }
+
+    public void onClickRecyclerViewButton(View view) {
+        startActivity(new Intent(MainActivity.this, NativeAdRecyclerViewActivity.class));
+    }
 }

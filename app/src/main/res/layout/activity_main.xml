@@ -25,4 +25,13 @@
         android:onClick="onClickButton"
         android:text="Banner style native ad" />
 
+    <Button
+        android:id="@+id/RecyclerViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:onClick="onClickRecyclerViewButton"
+        android:text="RecyclerView style native ad" />
+
 </LinearLayout>
