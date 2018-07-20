@@ -12,7 +12,7 @@ https://docs.google.com/document/d/1cvcZ6PL1NcG0a3ObQZVp8na5ORz_ZN_C3t0Rp44kUpE/
 
 3. NativeAdActivity 클래스의 PLACEMENT_ID는 담당 어카운트 매니저에게 요청하여 받은 값으로 사용해야 한다.
 
-## FULLSCREEN 광고 (v2.0.6 - 미배포)
+## FULLSCREEN 광고 (v2.0.6)
 ### FULLSCREEN 광고 받는 방법
 NativeAd 객체에 다음과 같이 FULLSCREEN 광고를 받을 수 있도록 설정한다.
 
@@ -40,9 +40,27 @@ AdListener nativeAdListener = new AdListener() {
 }
 ```
 
-## Manual Impression (v2.0.3 - 테스트 중)
+## Manual Impression (v2.0.3)
 기본적으로 광고 지면의 50% 이상이 노출되면 자동으로 impression 체크가 되는데, 이것이 잘 되지 않는 경우 수동으로 Impression을 설정할 수 있다.
 
 ```java
 ad.impression();
 ```
+
+
+## Release Note
+
+### v2.0.6
+* impression 체크 로직의 버그 수정
+* SponsoredText 문구를 퍼블리셔가 변경 가능
+* AdType 추가
+
+### v2.0.5
+* 불필요한 위치 권한(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION) 삭제
+
+### v2.0.4
+* 제목 터치 가능하게 수정
+* Ad와 NativeAdView간의 종속성 제거 (ViewHolder 사용 가능)
+
+### v2.0.3
+* 수동 impression 추가
