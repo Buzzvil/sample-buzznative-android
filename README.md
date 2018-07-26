@@ -1,6 +1,6 @@
-# BuzzNativeSample - 전면 광고 버전
+# Sample BuzzNative Android - 전면 광고 버전
 
-Sample Application for BuzzNative
+Sample Application for BuzzNative Android SDK
 
 이 문서는 전면 광고를 사용하는 경우에 특정하여 설명하기 위한 문서이다.
 일반 적인 경우는 [원본 버전](https://github.com/Buzzvil/BuzzNativeSample/tree/master) 참고.
