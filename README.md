@@ -1,6 +1,6 @@
-# BuzzNativeSample
+# Sample BuzzNative Android
 
-Sample Application for BuzzNative
+Sample Application for BuzzNative Android SDK
 
 1. BuzzNative 연동 가이드 문서
 https://docs.google.com/document/d/1cvcZ6PL1NcG0a3ObQZVp8na5ORz_ZN_C3t0Rp44kUpE/edit
