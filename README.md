@@ -5,8 +5,7 @@ Sample Application for BuzzNative Android SDK
 이 문서는 전면 광고를 사용하는 경우에 특정하여 설명하기 위한 문서이다.
 일반 적인 경우는 [원본 버전](https://github.com/Buzzvil/BuzzNativeSample/tree/master) 참고.
 
-1. BuzzNative 연동 가이드 문서
-https://docs.google.com/document/d/1cvcZ6PL1NcG0a3ObQZVp8na5ORz_ZN_C3t0Rp44kUpE/edit
+1. [BuzzNative 연동 가이드 문서](https://github.com/Buzzvil/sample-buzznative-android/wiki)
 
 2. 예시 레이아웃은 전면 광고 타입으로, 이 외에도 자유롭게 레이아웃을 구성하여 사용할 수 있다.
 
