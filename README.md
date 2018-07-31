@@ -9,7 +9,7 @@ Sample Application for BuzzNative Android SDK
 * Banner 스타일
 * RecyclerView 스타일
 
-3. PLACEMENT_ID는 담당 어카운트 매니저에게 요청하여 받은 후, app/build.gradle 파일에서 `YOUR_APP_KEY` 부분을 수정하면 샘플 앱을 사용할 수 있다.
+3. PLACEMENT_ID는 담당 어카운트 매니저에게 요청하여 받은 후, app/build.gradle 파일에서 `YOUR_PLACEMENT_ID` 변수에 받은 PLACEMENT ID를 문자열로 넣어주면 샘플 앱을 사용할 수 있다.
 
 
 ## Release Note
