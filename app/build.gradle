@@ -20,7 +20,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "PLACEMENT_ID", '"YOUR_APP_KEY"')
+        // Set your placement id as a String
+        def YOUR_PLACEMENT_ID = null
+
+        buildConfigField("String", "PLACEMENT_ID", YOUR_PLACEMENT_ID)
     }
     buildTypes {
         release {
