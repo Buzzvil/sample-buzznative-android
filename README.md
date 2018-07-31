@@ -2,8 +2,7 @@
 
 Sample Application for BuzzNative Android SDK
 
-1. BuzzNative 연동 가이드 문서
-https://docs.google.com/document/d/1cvcZ6PL1NcG0a3ObQZVp8na5ORz_ZN_C3t0Rp44kUpE/edit
+1. [BuzzNative 연동 가이드 문서](https://github.com/Buzzvil/sample-buzznative-android/wiki)
 
 2. 예시 레이아웃은 다음 3개이며, 이 외에도 자유롭게 레이아웃을 구성하여 사용할 수 있다.
 * Feed 스타일
