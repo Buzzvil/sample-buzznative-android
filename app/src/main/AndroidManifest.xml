@@ -19,7 +19,6 @@
 
         <activity android:name=".NativeAdActivity" />
 
-        <!-- Baidu integration -->
         <meta-data
             android:name="app_license"
             android:value="YOUR_APP_KEY" />
