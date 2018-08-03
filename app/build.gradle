@@ -21,7 +21,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         // Set your placement id as a String
-        def YOUR_PLACEMENT_ID = null
+        def YOUR_PLACEMENT_ID = '"YOUR_PLACEMENT_ID"'
 
         buildConfigField("String", "PLACEMENT_ID", YOUR_PLACEMENT_ID)
     }
