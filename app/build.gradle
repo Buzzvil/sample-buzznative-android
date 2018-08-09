@@ -48,12 +48,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    compile "com.buzzvil.buzzad:buzzad-sdk:$buzzNativeLibraryVersion"
-    compile "com.buzzvil.mediation:sdk-appnext:$buzzNativeLibraryVersion"
-    compile "com.buzzvil.mediation:sdk-baidu:$buzzNativeLibraryVersion"
-    compile "com.buzzvil.mediation:sdk-admob:$buzzNativeLibraryVersion"
-    compile "com.buzzvil.mediation:sdk-mytarget:$buzzNativeLibraryVersion"
-    compile "com.buzzvil.mediation:sdk-mopub:$buzzNativeLibraryVersion"
-    compile "com.buzzvil.mediation:sdk-outbrain:$buzzNativeLibraryVersion"
-    compile "com.android.support:multidex:1.0.1"
+    implementation "com.buzzvil.buzzad:buzzad-sdk:$buzzNativeLibraryVersion"
+    implementation "com.buzzvil.mediation:sdk-appnext:$buzzNativeLibraryVersion"
+    implementation "com.buzzvil.mediation:sdk-baidu:$buzzNativeLibraryVersion"
+    implementation "com.buzzvil.mediation:sdk-admob:$buzzNativeLibraryVersion"
+    implementation "com.buzzvil.mediation:sdk-mytarget:$buzzNativeLibraryVersion"
+    implementation "com.buzzvil.mediation:sdk-mopub:$buzzNativeLibraryVersion"
+    implementation "com.buzzvil.mediation:sdk-outbrain:$buzzNativeLibraryVersion"
+    implementation "com.android.support:multidex:1.0.1"
 }
