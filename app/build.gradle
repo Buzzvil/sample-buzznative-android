@@ -55,5 +55,5 @@ dependencies {
     implementation "com.buzzvil.mediation:sdk-mytarget:$buzzNativeLibraryVersion"
     implementation "com.buzzvil.mediation:sdk-mopub:$buzzNativeLibraryVersion"
     implementation "com.buzzvil.mediation:sdk-outbrain:$buzzNativeLibraryVersion"
-    implementation "com.android.support:multidex:1.0.1"
+    implementation "com.android.support:multidex:1.0.3"
 }
