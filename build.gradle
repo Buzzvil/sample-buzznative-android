@@ -36,5 +36,5 @@ ext {
     ANDROID_SUPPORT_VERSION = '25.3.1'
     ANDROID_ANNOTATIONS_VERSION = '4.4.0'
 
-    buzzNativeLibraryVersion = "2.0.7"
+    buzzNativeLibraryVersion = "2.0.8"
 }
