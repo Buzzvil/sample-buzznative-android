@@ -18,6 +18,9 @@ import com.buzzvil.buzzad.nativead.AdListener;
 import com.buzzvil.buzzad.nativead.NativeAd;
 import com.buzzvil.buzzad.nativead.NativeAdView;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class NativeAdRecyclerViewActivity extends Activity {
     public static final String TAG = "NARecyclerViewActivity";
 
@@ -25,6 +28,7 @@ public class NativeAdRecyclerViewActivity extends Activity {
     private Button btnLoadAd;
     private TextView tvAdResponse;
 
+    private NativeAd nativeAd;
     private RecyclerAdapter recyclerAdapter;
 
     @Override
@@ -36,6 +40,9 @@ public class NativeAdRecyclerViewActivity extends Activity {
         bindViews();
 
         setClickListener();
+
+        nativeAd = new NativeAd(NativeAdRecyclerViewActivity.this, BuildConfig.PLACEMENT_ID, true);
+        nativeAd.setAdListener(nativeAdListener);
     }
 
     void setContentView() {
@@ -56,8 +63,6 @@ public class NativeAdRecyclerViewActivity extends Activity {
     }
 
     void requestAd() {
-        NativeAd nativeAd = new NativeAd(this, BuildConfig.PLACEMENT_ID);
-        nativeAd.setAdListener(nativeAdListener);
         nativeAd.loadAd();
 
         tvAdResponse.setText("Loading");
@@ -83,7 +88,6 @@ public class NativeAdRecyclerViewActivity extends Activity {
         public void onError(BuzzAdError error) {
             Log.e(TAG, "AdListener : onError - " + error);
             tvAdResponse.setText("AdListener : onError - " + error);
-            recyclerView.setVisibility(View.GONE);
         }
 
         @Override
@@ -95,8 +99,7 @@ public class NativeAdRecyclerViewActivity extends Activity {
                 recyclerView.setVisibility(View.GONE);
             } else {
                 recyclerView.setVisibility(View.VISIBLE);
-                recyclerAdapter.setAdvertisement(ad);
-                recyclerAdapter.notifyDataSetChanged();
+                recyclerAdapter.addAdvertisement(ad);
             }
         }
 
@@ -115,7 +118,7 @@ public class NativeAdRecyclerViewActivity extends Activity {
         private final int VIEW_TYPE_TEXT = 0;
         private final int VIEW_TYPE_NATIVE_AD = 1;
 
-        private Ad ad = null;
+        private final Queue<Ad> ads = new LinkedList<>();
 
         RecyclerAdapter() {
         }
@@ -142,7 +145,8 @@ public class NativeAdRecyclerViewActivity extends Activity {
                     break;
                 case VIEW_TYPE_NATIVE_AD:
                     NativeAdViewHolder nativeAdViewHolder = (NativeAdViewHolder) viewHolder;
-                    nativeAdViewHolder.setAd(ad);
+                    nativeAdViewHolder.setAd(ads.poll());
+                    requestAd();
                     break;
             }
         }
@@ -157,8 +161,8 @@ public class NativeAdRecyclerViewActivity extends Activity {
             return 100000;
         }
 
-        public void setAdvertisement(Ad ad) {
-            this.ad = ad;
+        public void addAdvertisement(Ad ad) {
+            this.ads.add(ad);
         }
     }
 
