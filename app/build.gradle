@@ -6,7 +6,6 @@ repositories {
     maven { url "https://maven.google.com" }
     maven { url "https://dl.bintray.com/buzzvil/maven/" }
     maven { url "http://dl.appnext.com/" }
-    maven { url "https://s3.amazonaws.com/moat-sdk-builds" }
 }
 
 
@@ -48,12 +47,17 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation "com.buzzvil.buzzad:buzzad-sdk:$buzzNativeLibraryVersion"
-    implementation "com.buzzvil.mediation:sdk-appnext:$buzzNativeLibraryVersion"
-    implementation "com.buzzvil.mediation:sdk-baidu:$buzzNativeLibraryVersion"
-    implementation "com.buzzvil.mediation:sdk-admob:$buzzNativeLibraryVersion"
-    implementation "com.buzzvil.mediation:sdk-mytarget:$buzzNativeLibraryVersion"
-    implementation "com.buzzvil.mediation:sdk-mopub:$buzzNativeLibraryVersion"
-    implementation "com.buzzvil.mediation:sdk-outbrain:$buzzNativeLibraryVersion"
+    implementation "com.buzzvil:buzznative:$BUZZNATIVE_VERSION"
+    implementation "com.buzzvil.mediation:sdk-admob:$MEDIATION_ADMOB_VERSION"
+    implementation "com.buzzvil.mediation:sdk-appnext:$MEDIATION_APPNEXT_VERSION"
+    implementation "com.buzzvil.mediation:sdk-baidu:$MEDIATION_BAIDU_VERSION"
+    implementation "com.buzzvil.mediation:sdk-mopub:$MEDIATION_MOPUB_VERSION"
+    implementation "com.buzzvil.mediation:sdk-mytarget:$MEDIATION_MYTARGET_VERSION"
+    implementation "com.buzzvil.mediation:sdk-outbrain:$MEDIATION_OUTBRAIN_VERSION"
+
+    // Appnext
+    implementation "com.google.android.gms:play-services-basement:$PLAY_SERVICES_VERSION"
+    implementation "com.google.android.gms:play-services-location:$PLAY_SERVICES_VERSION"
+
     implementation "com.android.support:multidex:1.0.3"
 }
