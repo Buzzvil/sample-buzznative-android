@@ -16,6 +16,8 @@ public class BuzzNativeAdapter extends CustomEventNative {
     private static final String TAG = "BuzzNativeAdapter";
     private static final String PLACEMENT_ID_KEY = "placementId";
 
+    private static Location location = null;
+
     private CustomEventNativeListener customEventNativeListener;
 
     @Override
@@ -32,13 +34,30 @@ public class BuzzNativeAdapter extends CustomEventNative {
 
         this.customEventNativeListener = customEventNativeListener;
 
-        NativeAd nativeAd = new NativeAd(context, placementId);
+        final NativeAd nativeAd = new NativeAd(context, placementId);
         nativeAd.setAdListener(new BuzzNativeForMoPub());
+        if (location != null) {
+            nativeAd.setLocation(location.latitude, location.longitude);
+        }
         nativeAd.loadAd();
     }
 
     private static void logD(@NonNull final String tag, @NonNull final String message) {
         MoPubLog.d(tag + ": " + message);
+    }
+
+    public static void setLocation(final double latitude, final double longitude) {
+        BuzzNativeAdapter.location = new Location(latitude, longitude);
+    }
+
+    static class Location {
+        final double latitude;
+        final double longitude;
+
+        Location(final double latitude, final double longitude) {
+            this.latitude = latitude;
+            this.longitude = longitude;
+        }
     }
 
     class BuzzNativeForMoPub extends StaticNativeAd implements AdListener {
