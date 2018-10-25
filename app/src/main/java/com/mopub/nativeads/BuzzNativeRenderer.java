@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.buzzvil.buzzad.nativead.Ad;
 import com.buzzvil.buzzad.nativead.NativeAdView;
 import com.mopub.common.logging.MoPubLog;
 
@@ -148,7 +149,10 @@ public class BuzzNativeRenderer implements MoPubAdRenderer<BuzzNativeAdapter.Buz
         nativeAdView.setCallToActionView(buzzNativeViewHolder.callToActionView);
         nativeAdView.setSponsoredView(buzzNativeViewHolder.sponsoredView);
 
-        nativeAdView.setAd(buzzNativeAd.getAd());
+        final Ad oldAd = nativeAdView.setAd(buzzNativeAd.getAd());
+        if (oldAd != null) {
+            oldAd.destroy();
+        }
     }
 
     @Override

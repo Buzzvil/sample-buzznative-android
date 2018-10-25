@@ -197,7 +197,10 @@ public class NativeAdRecyclerViewActivity extends Activity {
             if (ad == null) {
                 return;
             }
-            nativeAdView.setAd(ad);
+            final Ad oldAd = nativeAdView.setAd(ad);
+            if (oldAd != null) {
+                oldAd.destroy();
+            }
             if (!TextUtils.isEmpty(ad.getCallToAction())) {
                 ((Button) nativeAdView.findViewById(R.id.btnCTA)).setText(ad.getCallToAction());
                 nativeAdView.findViewById(R.id.btnCTA).setVisibility(View.VISIBLE);

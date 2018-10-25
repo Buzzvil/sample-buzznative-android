@@ -78,7 +78,10 @@ public class NativeAdActivity extends Activity {
         nativeAdView.setIconView(nativeAdView.findViewById(R.id.ivIcon));
         nativeAdView.setCallToActionView(nativeAdView.findViewById(R.id.btnCTA));
         nativeAdView.setSponsoredView(nativeAdView.findViewById(R.id.tvSponsored));
-        nativeAdView.setAd(ad);
+        final Ad oldAd = nativeAdView.setAd(ad);
+        if (oldAd != null) {
+            oldAd.destroy();
+        }
 
         if (TextUtils.isEmpty(ad.getCallToAction()) == false) {
             ((Button) nativeAdView.findViewById(R.id.btnCTA)).setText(ad.getCallToAction());
