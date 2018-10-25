@@ -42,6 +42,7 @@ public class NativeAdRecyclerViewActivity extends Activity {
         setClickListener();
 
         nativeAd = new NativeAd(NativeAdRecyclerViewActivity.this, BuildConfig.PLACEMENT_ID, true);
+        nativeAd.enableParallelRequest();
         nativeAd.setAdListener(nativeAdListener);
     }
 
