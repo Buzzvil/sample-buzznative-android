@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.buzzvil.buzzad.BuzzAdError;
+import com.buzzvil.buzzad.BuzzSDK;
+import com.buzzvil.buzzad.UserProfile;
 import com.buzzvil.buzzad.nativead.Ad;
 import com.buzzvil.buzzad.nativead.AdListener;
 import com.buzzvil.buzzad.nativead.NativeAd;
@@ -17,6 +19,9 @@ public class BuzzNativeAdapter extends CustomEventNative {
     private static final String PLACEMENT_ID_KEY = "placementId";
 
     private static Location location = null;
+    private static String birthday = null;
+    private static String gender = null;
+
 
     private CustomEventNativeListener customEventNativeListener;
 
@@ -34,6 +39,7 @@ public class BuzzNativeAdapter extends CustomEventNative {
 
         this.customEventNativeListener = customEventNativeListener;
 
+        initializeUserProfile(context);
         final NativeAd nativeAd = new NativeAd(context, placementId);
         nativeAd.setAdListener(new BuzzNativeForMoPub());
         if (location != null) {
@@ -46,9 +52,41 @@ public class BuzzNativeAdapter extends CustomEventNative {
         MoPubLog.d(tag + ": " + message);
     }
 
+    private static void initializeUserProfile(final Context context) {
+        final UserProfile.Builder profileBuilder = new UserProfile.Builder(context);
+        if (!TextUtils.isEmpty(birthday)) {
+            profileBuilder.setBirthday(birthday);
+        }
+        if (!TextUtils.isEmpty(gender)) {
+            profileBuilder.setGender(gender);
+        }
+        final UserProfile userProfile = profileBuilder.build();
+
+        BuzzSDK.setUserProfile(context, userProfile);
+    }
+
     public static void setLocation(final double latitude, final double longitude) {
         BuzzNativeAdapter.location = new Location(latitude, longitude);
     }
+
+    /**
+     * Set the birthday of the user
+     *
+     * @param birthday A String with 'yyyy-MM-dd' format
+     */
+    public static void setUserBirthday(final String birthday) {
+        BuzzNativeAdapter.birthday = birthday;
+    }
+
+    /**
+     * Set the gender of the user
+     *
+     * @param gender UserProfile.USER_GENDER_FEMALE or UserProfile.USER_GENDER_MALE
+     */
+    public static void setUserGender(final String gender) {
+        BuzzNativeAdapter.gender = gender;
+    }
+
 
     static class Location {
         final double latitude;
