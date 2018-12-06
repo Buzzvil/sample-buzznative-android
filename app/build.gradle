@@ -56,8 +56,8 @@ dependencies {
     implementation "com.buzzvil.mediation:sdk-outbrain:$MEDIATION_OUTBRAIN_VERSION"
 
     // Appnext
-    implementation "com.google.android.gms:play-services-basement:$PLAY_SERVICES_VERSION"
-    implementation "com.google.android.gms:play-services-location:$PLAY_SERVICES_VERSION"
+    implementation "com.google.android.gms:play-services-basement:$PLAY_SERVICES_BASEMENT_VERSION"
+    implementation "com.google.android.gms:play-services-location:$PLAY_SERVICES_LOCATION_VERSION"
 
     implementation "com.android.support:multidex:1.0.3"
 }
