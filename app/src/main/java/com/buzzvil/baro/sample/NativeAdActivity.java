@@ -1,4 +1,4 @@
-package sample.buzznative.buzzvil.com.buzznativesample;
+package com.buzzvil.baro.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -16,9 +16,6 @@ import com.buzzvil.baro.nativead.AdListener;
 import com.buzzvil.baro.nativead.AssetBinder;
 import com.buzzvil.baro.nativead.NativeAd;
 import com.buzzvil.baro.nativead.NativeAdView;
-
-import static sample.buzznative.buzzvil.com.buzznativesample.NativeAdActivity.AdStyle.FEED;
-
 
 public class NativeAdActivity extends Activity {
     public static final String TAG = "NativeAdActivity";
@@ -67,7 +64,7 @@ public class NativeAdActivity extends Activity {
                 .setCallToActionId(R.id.btnCTA)
                 .setSponsoredId(R.id.tvSponsored);
 
-        if (adStyle == FEED) {
+        if (adStyle == AdStyle.FEED) {
             builder.setCoverMediaId(R.id.viewCoverMedia)
                     .setDescriptionId(R.id.tvDescription);
         }

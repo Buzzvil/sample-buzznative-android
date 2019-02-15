@@ -12,7 +12,7 @@ repositories {
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "sample.buzznative.buzzvil.com.buzznativesample"
+        applicationId "com.buzzvil.baro.sample"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
