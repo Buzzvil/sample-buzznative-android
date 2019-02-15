@@ -20,20 +20,15 @@
         <activity android:name=".NativeAdActivity" />
         <activity android:name=".NativeAdRecyclerViewActivity" />
 
-        <meta-data
-            android:name="app_license"
-            android:value="YOUR_APP_KEY" />
-
-        <meta-data
-            android:name="com.buzzvil.mediation.mopub.ad_unit_id"
-            android:value="YOUR_MOPUB_AD_UNIT_ID" />
-
-
         <!-- Admob integration -->
         <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
-    </application>
+            android:value="[YOUR_ADMOB_AD_UNIT_ID]" />
 
+        <!-- Mopub integration -->
+        <meta-data
+            android:name="com.buzzvil.mediation.mopub.ad_unit_id"
+            android:value="[YOUR_MOPUB_AD_UNIT_ID]" />
+    </application>
 </manifest>

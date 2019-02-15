@@ -47,7 +47,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation "com.buzzvil:buzznative:$BUZZNATIVE_VERSION"
+    implementation "com.buzzvil:baro:$BARO_SDK_VERSION"
     implementation "com.buzzvil.mediation:sdk-admob:$MEDIATION_ADMOB_VERSION"
     implementation "com.buzzvil.mediation:sdk-appnext:$MEDIATION_APPNEXT_VERSION"
     implementation "com.buzzvil.mediation:sdk-baidu:$MEDIATION_BAIDU_VERSION"

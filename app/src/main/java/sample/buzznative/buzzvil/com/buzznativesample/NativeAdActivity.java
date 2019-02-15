@@ -2,6 +2,7 @@ package sample.buzznative.buzzvil.com.buzznativesample;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,11 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.buzzvil.buzzad.BuzzAdError;
-import com.buzzvil.buzzad.nativead.Ad;
-import com.buzzvil.buzzad.nativead.AdListener;
-import com.buzzvil.buzzad.nativead.NativeAd;
-import com.buzzvil.buzzad.nativead.NativeAdView;
+import com.buzzvil.baro.BuzzAdError;
+import com.buzzvil.baro.nativead.Ad;
+import com.buzzvil.baro.nativead.AdListener;
+import com.buzzvil.baro.nativead.AssetBinder;
+import com.buzzvil.baro.nativead.NativeAd;
+import com.buzzvil.baro.nativead.NativeAdView;
+
+import static sample.buzznative.buzzvil.com.buzznativesample.NativeAdActivity.AdStyle.FEED;
+
 
 public class NativeAdActivity extends Activity {
     public static final String TAG = "NativeAdActivity";
@@ -22,26 +27,29 @@ public class NativeAdActivity extends Activity {
         FEED, BANNER
     }
 
-    private AdStyle adStyle = null;
+    private NativeAd nativeAd = null;
 
     private NativeAdView nativeAdView;
     private Button btnLoadAd;
     private TextView tvAdResponse;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        adStyle = (AdStyle) getIntent().getSerializableExtra("AdStyle");
+        final AdStyle adStyle = (AdStyle) getIntent().getSerializableExtra("AdStyle");
 
         setContentView(adStyle);
 
-        bindViews();
+        final AssetBinder assetBinder = getAssetBinder(adStyle);
+        nativeAd = new NativeAd.Builder(this, BuildConfig.PLACEMENT_ID, nativeAdListener)
+                .setAssetBinder(assetBinder)
+                .build();
 
-        setClickListener();
+        setupViews(assetBinder);
     }
 
-    void setContentView(AdStyle adStyle) {
+    void setContentView(final AdStyle adStyle) {
         switch (adStyle) {
             case FEED:
                 setContentView(R.layout.activity_feed_style_native_ad);
@@ -52,42 +60,48 @@ public class NativeAdActivity extends Activity {
         }
     }
 
-    void bindViews() {
+    AssetBinder getAssetBinder(final AdStyle adStyle) {
+        final AssetBinder.Builder builder = new AssetBinder.Builder()
+                .setTitleId(R.id.tvTitle)
+                .setIconImageId(R.id.ivIcon)
+                .setCallToActionId(R.id.btnCTA)
+                .setSponsoredId(R.id.tvSponsored);
+
+        if (adStyle == FEED) {
+            builder.setCoverMediaId(R.id.viewCoverMedia)
+                    .setDescriptionId(R.id.tvDescription);
+        }
+        return builder.build();
+    }
+
+    void setupViews(final AssetBinder assetBinder) {
         btnLoadAd = findViewById(R.id.btnLoadAd);
         tvAdResponse = findViewById(R.id.tvAdResponse);
         nativeAdView = findViewById(R.id.nativeAdView);
-    }
 
-    void setClickListener() {
         btnLoadAd.setOnClickListener(btnClickListener);
+        nativeAdView.setAssets(assetBinder);
     }
 
     void requestAd() {
-        NativeAd nativeAd = new NativeAd(this, BuildConfig.PLACEMENT_ID);
-        nativeAd.setAdListener(nativeAdListener);
         nativeAd.loadAd();
 
         tvAdResponse.setText("Loading");
     }
 
-    void setNativeAdView(Ad ad) {
+    void setNativeAdView(@NonNull final Ad ad) {
         nativeAdView.setVisibility(View.VISIBLE);
-        nativeAdView.setTitleView(nativeAdView.findViewById(R.id.tvTitle));
-        nativeAdView.setDescriptionView(nativeAdView.findViewById(R.id.tvDescription));
-        nativeAdView.setImageView(nativeAdView.findViewById(R.id.ivCoverImage));
-        nativeAdView.setIconView(nativeAdView.findViewById(R.id.ivIcon));
-        nativeAdView.setCallToActionView(nativeAdView.findViewById(R.id.btnCTA));
-        nativeAdView.setSponsoredView(nativeAdView.findViewById(R.id.tvSponsored));
-        final Ad oldAd = nativeAdView.setAd(ad);
+        final Ad oldAd = nativeAdView.unregisterAd();
         if (oldAd != null) {
             oldAd.destroy();
         }
+        nativeAdView.registerAd(ad);
 
-        if (TextUtils.isEmpty(ad.getCallToAction()) == false) {
+        if (TextUtils.isEmpty(ad.getCallToAction())) {
+            nativeAdView.findViewById(R.id.btnCTA).setVisibility(View.GONE);
+        } else {
             ((Button) nativeAdView.findViewById(R.id.btnCTA)).setText(ad.getCallToAction());
             nativeAdView.findViewById(R.id.btnCTA).setVisibility(View.VISIBLE);
-        } else {
-            nativeAdView.findViewById(R.id.btnCTA).setVisibility(View.GONE);
         }
     }
 

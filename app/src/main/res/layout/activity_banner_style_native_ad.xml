@@ -19,7 +19,7 @@
         android:gravity="center"
         android:text="Press loadAd button" />
 
-    <com.buzzvil.buzzad.nativead.NativeAdView
+    <com.buzzvil.baro.nativead.NativeAdView
         android:id="@+id/nativeAdView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -102,8 +102,8 @@
                     android:layout_marginRight="10dp"
                     android:ellipsize="end"
                     android:gravity="center"
-                    android:maxLines="1"
                     android:maxWidth="120dp"
+                    android:maxLines="1"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:text=""
@@ -111,6 +111,6 @@
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
-    </com.buzzvil.buzzad.nativead.NativeAdView>
+    </com.buzzvil.baro.nativead.NativeAdView>
 
 </LinearLayout>
