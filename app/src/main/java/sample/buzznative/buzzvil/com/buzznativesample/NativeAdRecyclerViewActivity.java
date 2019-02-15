@@ -12,11 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.buzzvil.buzzad.BuzzAdError;
-import com.buzzvil.buzzad.nativead.Ad;
-import com.buzzvil.buzzad.nativead.AdListener;
-import com.buzzvil.buzzad.nativead.NativeAd;
-import com.buzzvil.buzzad.nativead.NativeAdView;
+import com.buzzvil.baro.BuzzAdError;
+import com.buzzvil.baro.nativead.Ad;
+import com.buzzvil.baro.nativead.AdListener;
+import com.buzzvil.baro.nativead.AssetBinder;
+import com.buzzvil.baro.nativead.NativeAd;
+import com.buzzvil.baro.nativead.NativeAdView;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -28,6 +29,7 @@ public class NativeAdRecyclerViewActivity extends Activity {
     private Button btnLoadAd;
     private TextView tvAdResponse;
 
+    private AssetBinder assetBinder;
     private NativeAd nativeAd;
     private RecyclerAdapter recyclerAdapter;
 
@@ -37,30 +39,38 @@ public class NativeAdRecyclerViewActivity extends Activity {
 
         setContentView();
 
-        bindViews();
-
-        setClickListener();
-
-        nativeAd = new NativeAd(NativeAdRecyclerViewActivity.this, BuildConfig.PLACEMENT_ID, true);
-        nativeAd.enableParallelRequest();
-        nativeAd.setAdListener(nativeAdListener);
+        assetBinder = getAssetBinder();
+        nativeAd = new NativeAd.Builder(NativeAdRecyclerViewActivity.this, BuildConfig.PLACEMENT_ID, nativeAdListener)
+                .setAssetBinder(assetBinder)
+                .enableParallelRequest()
+                .build();
+        setupViews();
     }
 
     void setContentView() {
         setContentView(R.layout.activity_recyclerview_style_native_ad);
     }
 
-    void bindViews() {
+    AssetBinder getAssetBinder() {
+        return new AssetBinder.Builder()
+                .setTitleId(R.id.tvTitle)
+                .setIconImageId(R.id.ivIcon)
+                .setCallToActionId(R.id.btnCTA)
+                .setSponsoredId(R.id.tvSponsored)
+                .setCoverMediaId(R.id.viewCoverMedia)
+                .setDescriptionId(R.id.tvDescription)
+                .build();
+    }
+
+    void setupViews() {
         btnLoadAd = findViewById(R.id.btnLoadAd);
         tvAdResponse = findViewById(R.id.tvAdResponse);
         recyclerView = findViewById(R.id.recyclerView);
 
         recyclerAdapter = new RecyclerAdapter();
-        recyclerView.setAdapter(recyclerAdapter);
-    }
 
-    void setClickListener() {
         btnLoadAd.setOnClickListener(btnClickListener);
+        recyclerView.setAdapter(recyclerAdapter);
     }
 
     void requestAd() {
@@ -186,22 +196,18 @@ public class NativeAdRecyclerViewActivity extends Activity {
         NativeAdViewHolder(View view) {
             super(view);
             nativeAdView = view.findViewById(R.id.nativeAdView);
-            nativeAdView.setTitleView(nativeAdView.findViewById(R.id.tvTitle));
-            nativeAdView.setDescriptionView(nativeAdView.findViewById(R.id.tvDescription));
-            nativeAdView.setImageView(nativeAdView.findViewById(R.id.ivCoverImage));
-            nativeAdView.setIconView(nativeAdView.findViewById(R.id.ivIcon));
-            nativeAdView.setCallToActionView(nativeAdView.findViewById(R.id.btnCTA));
-            nativeAdView.setSponsoredView(nativeAdView.findViewById(R.id.tvSponsored));
+            nativeAdView.setAssets(assetBinder);
         }
 
         public void setAd(Ad ad) {
             if (ad == null) {
                 return;
             }
-            final Ad oldAd = nativeAdView.setAd(ad);
+            final Ad oldAd = nativeAdView.unregisterAd();
             if (oldAd != null) {
                 oldAd.destroy();
             }
+            nativeAdView.registerAd(ad);
             if (!TextUtils.isEmpty(ad.getCallToAction())) {
                 ((Button) nativeAdView.findViewById(R.id.btnCTA)).setText(ad.getCallToAction());
                 nativeAdView.findViewById(R.id.btnCTA).setVisibility(View.VISIBLE);
