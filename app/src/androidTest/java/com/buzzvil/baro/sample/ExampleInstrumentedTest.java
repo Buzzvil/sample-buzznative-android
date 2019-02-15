@@ -1,4 +1,4 @@
-package sample.buzznative.buzzvil.com.buzznativesample;
+package com.buzzvil.baro.sample;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("sample.buzznative.buzzvil.com.buzznativesample", appContext.getPackageName());
+        assertEquals("com.buzzvil.baro.sample", appContext.getPackageName());
     }
 }

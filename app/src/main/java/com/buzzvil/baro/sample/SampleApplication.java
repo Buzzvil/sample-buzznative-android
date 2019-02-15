@@ -1,4 +1,4 @@
-package sample.buzznative.buzzvil.com.buzznativesample;
+package com.buzzvil.baro.sample;
 
 import android.app.Application;
 import android.support.multidex.MultiDex;

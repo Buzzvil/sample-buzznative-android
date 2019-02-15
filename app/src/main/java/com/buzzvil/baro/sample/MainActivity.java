@@ -1,4 +1,4 @@
-package sample.buzznative.buzzvil.com.buzznativesample;
+package com.buzzvil.baro.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
