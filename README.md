@@ -2,7 +2,7 @@
 
 Sample Application for BARO Android SDK
 
-* BARO: BuzzAd Reward Optimizer
+* BARO: BuzzAd Revenue Optimizer
 
 1. [BARO SDK 연동 가이드 문서](https://github.com/Buzzvil/sample-baro-android/wiki)
 
