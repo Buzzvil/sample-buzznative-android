@@ -7,31 +7,75 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnFeedStyle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_margin="15dp"
-        android:onClick="onClickButton"
-        android:text="Feed style native ad" />
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnBannerStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="15dp"
-        android:onClick="onClickButton"
-        android:text="Banner style native ad" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="15dp"
+            android:text="Native Ad"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/RecyclerViewStyle"
+        <Button
+            android:id="@+id/btnFeedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:onClick="onClickButton"
+            android:text="Feed style native ad" />
+
+        <Button
+            android:id="@+id/btnBannerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:onClick="onClickButton"
+            android:text="Banner style native ad" />
+
+        <Button
+            android:id="@+id/RecyclerViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:onClick="onClickRecyclerViewButton"
+            android:text="RecyclerView style native ad" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_margin="15dp"
-        android:onClick="onClickRecyclerViewButton"
-        android:text="RecyclerView style native ad" />
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="15dp"
+            android:text="Banner Ad"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/bannerAd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:onClick="onClickBannerAd"
+            android:text="banner ad" />
+    </LinearLayout>
+
 
 </LinearLayout>

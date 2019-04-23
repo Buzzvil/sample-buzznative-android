@@ -31,4 +31,8 @@ public class MainActivity extends AppCompatActivity {
     public void onClickRecyclerViewButton(View view) {
         startActivity(new Intent(MainActivity.this, NativeAdRecyclerViewActivity.class));
     }
+
+    public void onClickBannerAd(View view) {
+        startActivity(new Intent(MainActivity.this, BannerAdActivity.class));
+    }
 }
