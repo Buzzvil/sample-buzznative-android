@@ -35,4 +35,8 @@ public class MainActivity extends AppCompatActivity {
     public void onClickBannerAd(View view) {
         startActivity(new Intent(MainActivity.this, BannerAdActivity.class));
     }
+
+    public void onClickInterstitialAd(View view) {
+        startActivity(new Intent(MainActivity.this, InterstitialAdActivity.class));
+    }
 }

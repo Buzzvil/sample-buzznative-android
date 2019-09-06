@@ -19,6 +19,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        multiDexEnabled true
+
         // Set your placement id as a String
         // ex) def YOUR_PLACEMENT_ID = "1234567890"
         def YOUR_PLACEMENT_ID = null
@@ -27,6 +29,7 @@ android {
             throw new GradleException("Set YOUR_PLACEMENT_ID in app/build.gradle!")
         }
 
+        resValue "string", "placementId", "${YOUR_PLACEMENT_ID}"
         buildConfigField("String", "PLACEMENT_ID", "\"$YOUR_PLACEMENT_ID\"")
     }
     buildTypes {
