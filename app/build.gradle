@@ -4,17 +4,16 @@ apply plugin: 'com.android.application'
 repositories {
     jcenter()
     maven { url "https://maven.google.com" }
-    maven { url "https://dl.bintray.com/buzzvil/maven/" }
-    maven { url "http://dl.appnext.com/" }
+    maven { url "https://dl.buzzvil.com/public/maven/" }
 }
 
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.buzzvil.baro.sample"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -51,8 +50,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation "com.buzzvil:baro:$BARO_SDK_VERSION"
-    implementation "com.buzzvil.mediation:sdk-admob:$MEDIATION_ADMOB_VERSION"
-    implementation "com.buzzvil.mediation:sdk-appnext:$MEDIATION_APPNEXT_VERSION"
+    // implementation "com.buzzvil.mediation:sdk-admob:$MEDIATION_ADMOB_VERSION"
     implementation "com.buzzvil.mediation:sdk-baidu:$MEDIATION_BAIDU_VERSION"
     implementation "com.buzzvil.mediation:sdk-mopub:$MEDIATION_MOPUB_VERSION"
     implementation "com.buzzvil.mediation:sdk-mytarget:$MEDIATION_MYTARGET_VERSION"
